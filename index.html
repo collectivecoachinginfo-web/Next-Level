@@ -32,12 +32,13 @@ nav{background:var(--berry);padding:0 48px;display:flex;align-items:center;justi
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--berry-dark);z-index:250;flex-direction:column;padding:32px 28px;overflow-y:auto}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--berry-dark);z-index:250;flex-direction:column;padding:32px 28px 48px;overflow-y:auto}
 .mobile-menu.open{display:flex}
-.mobile-menu a{color:rgba(238,217,196,0.8);font-size:15px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:18px 0;border-bottom:1px solid rgba(238,217,196,0.1);display:block;transition:color 0.2s}
-.mobile-menu a:last-of-type{border-bottom:none}
-.mobile-menu a:hover{color:var(--cream)}
-.mobile-cta-wrap{margin-top:32px}
+.mobile-nav-links{display:flex;flex-direction:column}
+.mobile-nav-links a{color:rgba(238,217,196,0.85);font-size:15px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:18px 0;border-bottom:1px solid rgba(238,217,196,0.12);display:block;transition:color 0.2s}
+.mobile-nav-links a:last-child{border-bottom:none}
+.mobile-nav-links a:hover{color:var(--cream)}
+.mobile-cta-wrap{margin-top:36px;padding-top:4px}
 .mobile-cta{background:var(--cream);color:var(--berry-dark);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 28px;border-radius:50px;text-align:center;display:block;transition:all 0.2s}
 .mobile-cta:hover{background:var(--cream-mid);color:var(--berry-dark)}
 @media(max-width:900px){nav{padding:0 20px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
@@ -355,12 +356,14 @@ footer a{color:rgba(238,217,196,0.5)}
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
-  <a href="#program" onclick="closeMenu()">Program</a>
-  <a href="#personas" onclick="closeMenu()">Who It&rsquo;s For</a>
-  <a href="#compare" onclick="closeMenu()">Value</a>
-  <a href="#roi" onclick="closeMenu()">ROI</a>
-  <a href="#employer" onclick="closeMenu()">Resources</a>
-  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <div class="mobile-nav-links">
+    <a href="#program" onclick="closeMenu()">Program</a>
+    <a href="#personas" onclick="closeMenu()">Who It&rsquo;s For</a>
+    <a href="#compare" onclick="closeMenu()">Value</a>
+    <a href="#roi" onclick="closeMenu()">ROI</a>
+    <a href="#employer" onclick="closeMenu()">Resources</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+  </div>
   <div class="mobile-cta-wrap">
     <a href="https://www.joincollectivecoaching.com/next-level-a-career-elevation-program/buy?offer_id=5554684" target="_blank" class="mobile-cta" onclick="closeMenu()">Enroll Now &mdash; $849</a>
   </div>
