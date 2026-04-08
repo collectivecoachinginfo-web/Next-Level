@@ -19,15 +19,28 @@ body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text-dark);m
 a{color:var(--berry);text-decoration:none}
 
 /* NAV */
-nav{background:var(--berry);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(107,46,71,0.3)}
-.nav-brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);letter-spacing:1px}
+nav{background:var(--berry);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:300;box-shadow:0 2px 20px rgba(107,46,71,0.3)}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);letter-spacing:1px;flex-shrink:0}
 .nav-brand span{color:rgba(238,217,196,0.6);font-weight:300;font-size:13px;letter-spacing:2px;text-transform:uppercase;display:block;line-height:1}
 .nav-links{display:flex;gap:22px;list-style:none}
 .nav-links a{color:rgba(238,217,196,0.7);font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s}
 .nav-links a:hover{color:var(--cream)}
-.nav-cta{background:var(--cream);color:var(--berry-dark);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border-radius:30px;transition:all 0.2s;white-space:nowrap}
+.nav-cta{background:var(--cream);color:var(--berry-dark);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border-radius:30px;transition:all 0.2s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{background:var(--cream-mid);transform:translateY(-1px);color:var(--berry-dark)}
-@media(max-width:900px){.nav-links{display:none}}
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:0;gap:5px;flex-shrink:0}
+.hamburger span{display:block;width:22px;height:2px;background:var(--cream);border-radius:2px;transition:all 0.3s ease;transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:var(--berry-dark);z-index:250;flex-direction:column;padding:32px 28px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:rgba(238,217,196,0.8);font-size:15px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:18px 0;border-bottom:1px solid rgba(238,217,196,0.1);display:block;transition:color 0.2s}
+.mobile-menu a:last-of-type{border-bottom:none}
+.mobile-menu a:hover{color:var(--cream)}
+.mobile-cta-wrap{margin-top:32px}
+.mobile-cta{background:var(--cream);color:var(--berry-dark);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 28px;border-radius:50px;text-align:center;display:block;transition:all 0.2s}
+.mobile-cta:hover{background:var(--cream-mid);color:var(--berry-dark)}
+@media(max-width:900px){nav{padding:0 20px}.nav-links,.nav-cta{display:none}.hamburger{display:flex}}
 
 /* BANNER */
 .banner{background:var(--berry-dark);text-align:center;padding:12px 24px}
@@ -270,17 +283,55 @@ footer a{color:rgba(238,217,196,0.5)}
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .hero{padding:70px 24px 60px}
-  .hero h1{font-size:48px}
-  .sec{padding:60px 24px}
-  .pgrid,.pgrid2,.prog-details,.dgrid,.ogrid,.roi-wrap,.vcards{grid-template-columns:1fr}
-  .roi-g4{grid-template-columns:1fr}
-  .ctable{font-size:12px}
-  .ctable th,.ctable td{padding:10px}
-  nav{padding:0 20px}
-  .hero-stats{flex-direction:column}
+  .hero{padding:60px 20px 50px}
+  .hero h1{font-size:44px}
+  .hero-tag{font-size:19px}
+  .hero-collab{flex-wrap:wrap;justify-content:center;text-align:center}
+  .hero-stats{flex-direction:column;max-width:100%}
   .hero-stat{border-right:none;border-bottom:1px solid rgba(238,217,196,0.15)}
+  .hero-stat:last-child{border-bottom:none}
+  .hero-actions{flex-direction:column;align-items:stretch;padding:0 8px}
+  .btn-p,.btn-s{text-align:center;padding:14px 24px}
+  .sec{padding:52px 20px}
+  .s-title{font-size:32px}
+  .s-sub{font-size:15px}
+  .pgrid{grid-template-columns:1fr}
+  .pgrid2{grid-template-columns:1fr}
+  .prog-details{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:1fr 1fr}
+  .ogrid{grid-template-columns:1fr}
+  .roi-wrap{grid-template-columns:1fr}
+  .vcards{grid-template-columns:1fr}
+  .roi-g4{grid-template-columns:1fr 1fr}
+  .ptabs{max-width:100%;border-radius:12px}
+  .ptab{border-radius:8px;font-size:11px;padding:12px 10px;letter-spacing:1px}
   .si-row{grid-template-columns:1fr;gap:4px}
+  .si-time{text-align:left}
+  .ctable{font-size:11px}
+  .ctable th,.ctable td{padding:8px 10px}
+  .ltr-tabs{flex-direction:column}
+  .ltr-btn{text-align:center}
+  .lbox{padding:24px 20px}
+  .lbox::before{display:none}
+  .acc-btn{padding:18px 20px}
+  .acc-body{padding:0 16px 24px}
+  .cta-sec{padding:60px 20px}
+  .cta-sec h2{font-size:36px}
+  .cta-acts{flex-direction:column;align-items:stretch}
+  .cta-main{text-align:center}
+  footer{padding:24px 20px}
+  .roi-main .rv{font-size:44px}
+  .pcard{padding:24px 20px}
+  .persona-sec .s-sub{text-align:center}
+}
+@media(max-width:480px){
+  .hero h1{font-size:36px}
+  .hero-tag{font-size:17px}
+  .s-title{font-size:28px}
+  .roi-g4{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:1fr}
+  .ptabs{flex-direction:column;border-radius:12px}
+  .ptab{border-radius:8px}
 }
 </style>
 </head>
@@ -297,7 +348,23 @@ footer a{color:rgba(238,217,196,0.5)}
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="https://www.joincollectivecoaching.com/next-level-a-career-elevation-program/buy?offer_id=5554684" target="_blank" class="nav-cta">Claim Your Spot &rarr;</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="#program" onclick="closeMenu()">Program</a>
+  <a href="#personas" onclick="closeMenu()">Who It&rsquo;s For</a>
+  <a href="#compare" onclick="closeMenu()">Value</a>
+  <a href="#roi" onclick="closeMenu()">ROI</a>
+  <a href="#employer" onclick="closeMenu()">Resources</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <div class="mobile-cta-wrap">
+    <a href="https://www.joincollectivecoaching.com/next-level-a-career-elevation-program/buy?offer_id=5554684" target="_blank" class="mobile-cta" onclick="closeMenu()">Enroll Now &mdash; $849</a>
+  </div>
+</div>
 
 <div class="banner">
   <p>&#128640; Next Level Launches April 29, 2026 &nbsp;&middot;&nbsp; <span>Limited to 12 Participants &nbsp;&middot;&nbsp; Enrollment Now Open</span></p>
@@ -704,6 +771,39 @@ footer a{color:rgba(238,217,196,0.5)}
 </footer>
 
 <script>
+// Hamburger menu
+function toggleMenu(){
+  var hb = document.getElementById('hamburger');
+  var mm = document.getElementById('mobile-menu');
+  var isOpen = mm.classList.contains('open');
+  if(isOpen){ closeMenu(); } else {
+    mm.classList.add('open');
+    hb.classList.add('open');
+    hb.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeMenu(){
+  var hb = document.getElementById('hamburger');
+  var mm = document.getElementById('mobile-menu');
+  mm.classList.remove('open');
+  hb.classList.remove('open');
+  hb.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+// Close menu on outside click
+document.addEventListener('click', function(e){
+  var mm = document.getElementById('mobile-menu');
+  var hb = document.getElementById('hamburger');
+  if(mm.classList.contains('open') && !mm.contains(e.target) && !hb.contains(e.target)){
+    closeMenu();
+  }
+});
+// Close menu on ESC
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeMenu();
+});
+
 // Email via JS - prevents any proxy from mangling it
 (function(){
   var e = 'collectivecoachinginfo' + '@' + 'gmail.com';
